@@ -49,7 +49,11 @@ const RuneFinder = () => {
 				console.log(runeData.Bloodborne_getRuneByName.source.connectCharacter.encounters.edges[0].node.step)
 				console.log(runeData.Bloodborne_getRuneByName.source.connectCharacter.encounters.edges[0].node.location.name)
 				return (
-					null
+					<div>
+						<h1>{runeData.Bloodborne_getRuneByName.name}</h1>
+						<h1>comes from {runeData.Bloodborne_getRuneByName.source.name}</h1>
+						<h1>in {runeData.Bloodborne_getRuneByName.source.connectCharacter.encounters.edges[0].node.location.name}</h1>
+					</div>
 				)
 
         // return data.rune.map(({ id, name }) => (
