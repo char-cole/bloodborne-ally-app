@@ -9,6 +9,7 @@ const Docs = (props) => {
         name
         fields {
           name
+          description
           type {
             name
             ofType {
@@ -26,8 +27,14 @@ const Docs = (props) => {
         if (loading) return null;
         if (error) return `Error!: ${error}`;
 
+        let sortedTypes = data.__schema.types.sort((a,b) => {
+          let one = a.name;
+          let two = b.name;
+          return (one > two) ? 1 : -1
+        });
+
         return (
-          <div className="container">
+          <div className="container bg-light">
             <header className="p-3 text-left">
               <h2 className="font-weight-bold">
                 Bloodborne Ally | Docs
@@ -38,7 +45,7 @@ const Docs = (props) => {
             </header>
             <div className="row">
               <div id="accordion" className="col">
-                {data.__schema.types.map((x,i) => {
+                {sortedTypes.map((x,i) => {
                   if (props.allTypes.includes(x.name)) {
                     console.log(x);
                     return (
@@ -63,27 +70,35 @@ const Docs = (props) => {
                         >
                           <div className="card-body">
                             <ul className="text-left list-unstyled py-0 px-1 m-0">
+                              <li className="row py-2 font-weight-bold">
+                                <p className="col-5">
+                                  Field
+                                </p>
+                                <p className="col-7">
+                                  Type
+                                </p>
+                              </li>
                               {x.fields.map((field, index, array) => {
-                                let typeType = field.type.name;
                                 let required = "";
+                                let typeType = field.type.name;
                                 if (field.type.ofType) {
                                   required = "*";
                                   typeType = field.type.ofType.name;
                                 }
-                                  let border = " border-bottom";
-                                  if (index === array.length-1) {
-                                    border = "";
-                                  }
-                                  return (
-                                    <li key={index} className={"row py-2"+border}>
-                                      <span className="col-5 font-weight-bold">
-                                        {field.name}<span className="text-danger">{required}</span>
-                                      </span>
-                                      <span className="col-7">
-                                        {typeType}
-                                      </span>
-                                    </li>
-                                  )
+                                let border = " border-bottom";
+                                if (index === array.length-1) border = "";
+                                if (field.name === "id") field.description = "";
+                                return (
+                                  <li key={index} className={"row py-2"+border}>
+                                    <div className="col-5">
+                                      {field.name}<span className="text-danger">{required}</span>
+                                    </div>
+                                    <span className="col-7">
+                                      {typeType}
+                                    </span>
+                                    <small className="col-12 text-muted">{field.description}</small>
+                                  </li>
+                                )
                               })}
                             </ul>
                           </div>
