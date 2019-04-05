@@ -1,113 +1,68 @@
 import React, { Component } from 'react';
-import { Query } from "react-apollo";
+import { Query, ApolloConsumer } from "react-apollo";
 import gql from "graphql-tag";
 
-// const examineRune = gql`{
-//   Bloodborne_getRuneById(id: "") {
-//     name
-//     isCovenant
-//     tier
-//     effect
-//     pickUp {
-//       name
-//     }
-//     droppedByBoss {
-//       edges {
-//         node {
-//           name
-//           location {
-//             name
-//           }
-
-//         }
-//       }
-//     }
-//     droppedByNPC {
-//       edges {
-//         node {
-//           name
-//           location {
-//             name
-//           }
-//           quest {
-//             name
-//           }
-//           step
-//           firstAvailablePhase {
-//             name
-//           }
-//         }
-//       }
-//     }
-//     rewardFrom {
-//       edges {
-//         node {
-//           name
-//           location {
-//             name
-//           }
-//           quest {
-//             name
-//           }
-//           step
-//           firstAvailablePhase {
-//             name
-//           }
-//         }
-//       }
-//     }
-//   }
-// }`
-
 class RuneFinder extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchString: ""
-    };
-  }
-  getRunes = gql`{
-    Bloodborne_listRune(first: 10, after: "") {
+  searchRunes = gql`query getTheseRunes($search: String!) {
+    Bloodborne_listRune(filter: {
+      node: {
+        name: {
+          contains: $search
+        }
+      }
+    }) {
       edges {
         node {
+          id
           name
+          effect
         }
       }
     }
   }`
 
-  getUser = gql`{
-    getUserByEmail(email: "charcole@protonmail.com") {
-      firstName
-    }
-  }`
-
   render() {
     return(
-      <Query query={this.getRunes}
-      >
-      {({ loading, error, data }) => {
-          if (loading) return <p>Loading...</p>;
-          if (error) return <p>Error :(</p>;
-
-          // let runeData = data.Bloodborne_listRune.edges
-          // console.log(runeData)
-          console.log(data)
-          return (
-            <h1>{data}</h1>
-            // <input
-            //   name="rune"
-            //   type="text"
-            //   onChange={(e) => {
-            //     this.setState({
-            //       searchString: e.target.value
-            //     })
-            //   }}
-            //   value={this.state.searchString}
-            // />
-          )
-      }}
-      </Query>
+      <div className="container bg-light" style={{minHeight:"100vh"}}>
+        <header className="p-3 text-left">
+          <h2 className="font-weight-bold">
+            Bloodborne Ally | Runes
+          </h2>
+          <h5 className="pr-5">
+            Search for runes by name.
+          </h5>
+        </header>
+        <input type="text"
+          value={this.props.searchString}
+          onChange={(e) => this.props.updateSearch(e.target.value)}
+        ></input>
+        <ApolloConsumer>
+          {client => (
+            <button className="btn btn-secondary"
+              onClick={async () => {
+                const { data } = await client.query({
+                  query: this.searchRunes,
+                  variables: {"search": this.props.searchString}
+                });
+                console.log(data);
+                this.props.updateResults(data.Bloodborne_listRune.edges);
+                console.log(this.props.currentResults)
+              }}
+            >
+              Search for runes
+            </button>
+          )}
+        </ApolloConsumer>
+        <div className="row mt-5">
+          {this.props.currentResults.map((x,i) => {
+            return (
+              <div className="col-3" key={i}>
+                <button className="btn">{x.node.name}</button>
+              </div>
+            )
+          })}
+        </div>
+      </div>
     )
   }
 }

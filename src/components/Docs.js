@@ -70,7 +70,7 @@ const Docs = (props) => {
                           data-parent="#accordion"
                         >
                           <div className="card-body">
-                            <p><small class="text-muted">{x.description}</small></p>
+                            <small className="px-1 mb-3 d-block">{x.description}</small>
                             <ul className="text-left list-unstyled py-0 px-1 m-0">
                               <li className="row py-2 font-weight-bold">
                                 <p className="col-5">

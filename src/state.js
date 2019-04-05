@@ -21,5 +21,7 @@ export default {
         "Bloodborne_Shape",
         "Bloodborne_Weapon",
         "Bloodborne_WeaponVersion"
-    ]
+    ],
+    searchString: "",
+    currentResults: [],
 }
