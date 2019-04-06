@@ -1,8 +1,10 @@
 import React from 'react';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import PageHeader from "./PageHeader.js"
 
 const Docs = (props) => {
+  let page = "Docs"
   let getTypes = gql`{
     __schema {
       types {
@@ -29,21 +31,13 @@ const Docs = (props) => {
         if (error) return `Error!: ${error}`;
 
         let sortedTypes = data.__schema.types.sort((a,b) => {
-          let one = a.name;
-          let two = b.name;
-          return (one > two) ? 1 : -1
+          let names = [a.name, b.name];
+          return (names[0] > names[1]) ? 1 : -1
         });
 
         return (
-          <div className="container bg-light">
-            <header className="p-3 text-left">
-              <h2 className="font-weight-bold">
-                Bloodborne Ally | Docs
-              </h2>
-              <h5 className="pr-5">
-                This page lists the entire schema. Each type is listed with each of its fields.
-              </h5>
-            </header>
+          <div className="pb-3">
+            <PageHeader page={page} description="This page lists the entire schema. Each type displays each of its available fields."></PageHeader>
             <div className="row">
               <div id="accordion" className="col">
                 {sortedTypes.map((x,i) => {
