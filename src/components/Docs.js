@@ -24,11 +24,75 @@ const Docs = (props) => {
     }
   }`
 
+  let instructionalText = (
+    <div className="col-12 col-md-6 mt-10 text-left">
+      <h5>
+        How to use this API
+      </h5>
+      <p>
+        To find a specific entry, valid queries are of the format&nbsp;<code>Bloodborne_get[Type]By[Name/ID]</code>
+      </p>
+      <p>
+        To list all entries (currently capped at first 10 results), valid queries are of the format&nbsp;
+        <code>Bloodborne_list[Type]</code>. This query allows filters.
+      </p>
+      <p>
+        In a GraphQL API, fields can be populated by specific entries of other type.
+        For example, the type "Location" has a field named "headstone". Instead of a
+        String, the value of this field is a "Bloodborne_Headstone". When querying a
+        Location, the query can extend into the fields of the Headstone type.
+      </p>
+      <p>
+        This allows a single query to begin at any node in the API and reach almost any other node.
+      </p>
+      <p>
+        For example, the query <code>Bloodborne_getRuneByName(name: "Blood Rapture 3")</code> could return
+        any of the fields of the type Bloodborne_Rune. Since some of these fields are themselves
+        types, it could also return any of the fields of <i>those</i> types. This can continue
+        infinitely.
+      </p>
+      <p>
+        If we know the rune "Blood Rapture 3" is dropped by an NPC (in this case, Bloody Crow of Cainhurst),
+        we could access the name of a specific Encounter (a step of a Quest) that would be made unavailable
+        by the beginning of whichever Phase "Blood Rapture 3" first becomes available. The following path
+        identifies this information (in this case, a string) in the data object returned by the above query:
+      </p>
+      <p>
+        <code>
+          data.droppedByNPC.edges[0].node.firstAvailablePhase.blocksEncounters.edges[0].node.name
+        </code>
+      </p>
+      <p>
+        This would return the name (<code>.name</code>)
+        of the first encounter (<code>.edges[0].node</code>)
+        in an array of encounters (<code>.edges</code>)
+        that become unavailable (<code>.blocksEncounters</code>)
+        at the start of the Blood Moon phase (<code>.firstAvailablePhase</code>),
+        which is when the encounter (<code>.droppedByNPC</code>)
+        with Bloody Crow of Cainhurst (<code>data.droppedByNPC.edges[0].node.target.name</code>)
+        first becomes available during Eileen's Quest (<code>data.droppedByNPC.edges[0].node.quest.name</code>).
+      </p>
+    </div>
+  )
+
   let typeDivs = (
     <Query query={getTypes}>
       {({ loading, error, data }) => {
         if (loading) return null;
-        if (error) return `Error!: ${error}`;
+        if (error) {
+          console.log(error)
+          return (
+            <div className="row">
+              <div className="col-12 col-md-6">
+                <h5>
+                  There was an error. Most likely, the API is asleep and could not be accessed.
+                  Check the console log for more information.
+                </h5>
+              </div>
+              {instructionalText}
+            </div>
+          )
+        }
 
         let sortedTypes = data.__schema.types.sort((a,b) => {
           let names = [a.name, b.name];
@@ -37,7 +101,7 @@ const Docs = (props) => {
 
         return (
             <div className="row">
-              <div id="accordion" className="col">
+              <div id="accordion" className="col-12 col-md-6">
                 {sortedTypes.map((x,i) => {
                   if (props.allTypes.includes(x.name)) {
                     console.log(x);
@@ -103,54 +167,7 @@ const Docs = (props) => {
                   else return null;
                 })}
               </div>
-              <div className="col mt-10 text-left">
-                <h5>
-                  How to use this API
-                </h5>
-                <p>
-                  To find a specific entry, valid queries are of the format&nbsp;<code>Bloodborne_get[Type]By[Name/ID]</code>
-                </p>
-                <p>
-                  To list all entries (currently capped at first 10 results), valid queries are of the format&nbsp;
-                  <code>Bloodborne_list[Type]</code>. This query allows filters.
-                </p>
-                <p>
-                  In a GraphQL API, fields can be populated by specific entries of other type.
-                  For example, the type "Location" has a field named "headstone". Instead of a
-                  String, the value of this field is a "Bloodborne_Headstone". When querying a
-                  Location, the query can extend into the fields of the Headstone type.
-                </p>
-                <p>
-                  This allows a single query to begin at any node in the API and reach almost any other node.
-                </p>
-                <p>
-                  For example, the query <code>Bloodborne_getRuneByName(name: "Blood Rapture 3")</code> could return
-                  any of the fields of the type Bloodborne_Rune. Since some of these fields are themselves
-                  types, it could also return any of the fields of <i>those</i> types. This can continue
-                  infinitely.
-                </p>
-                <p>
-                  If we know the rune "Blood Rapture 3" is dropped by an NPC (in this case, Bloody Crow of Cainhurst),
-                  we could access the name of a specific Encounter (a step of a Quest) that would be made unavailable
-                  by the beginning of whichever Phase "Blood Rapture 3" first becomes available. The following path
-                  identifies this information (in this case, a string) in the data object returned by the above query:
-                </p>
-                <p>
-                  <code>
-                    data.droppedByNPC.edges[0].node.firstAvailablePhase.blocksEncounters.edges[0].node.name
-                  </code>
-                </p>
-                <p>
-                  This would return the name (<code>.name</code>)
-                  of the first encounter (<code>.edges[0].node</code>)
-                  in an array of encounters (<code>.edges</code>)
-                  that become unavailable (<code>.blocksEncounters</code>)
-                  at the start of the Blood Moon phase (<code>.firstAvailablePhase</code>),
-                  which is when the encounter (<code>.droppedByNPC</code>)
-                  with Bloody Crow of Cainhurst (<code>data.droppedByNPC.edges[0].node.target.name</code>)
-                  first becomes available during Eileen's Quest (<code>data.droppedByNPC.edges[0].node.quest.name</code>).
-                </p>
-              </div>
+              {instructionalText}
             </div>
         )
       }}

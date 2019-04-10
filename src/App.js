@@ -21,8 +21,8 @@ class App extends Component {
             </nav>
             <div className="container bg-light pt-3" style={{minHeight: "100vh"}}>
               <Switch>
-                <Route path="/gesture" component={GestureFinderContainer} />
-                <Route path="/rune" component={RuneFinderContainer} />
+                <Route path="/build/gesture" component={GestureFinderContainer} />
+                <Route path="/build/rune" component={RuneFinderContainer} />
                 <Route path="/" component={DocsContainer} />
               </Switch>
             </div>
