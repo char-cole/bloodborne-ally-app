@@ -36,8 +36,6 @@ const Docs = (props) => {
         });
 
         return (
-          <div className="pb-3">
-            <PageHeader page={page} description="This page lists the entire schema. Each type displays each of its available fields."></PageHeader>
             <div className="row">
               <div id="accordion" className="col">
                 {sortedTypes.map((x,i) => {
@@ -154,14 +152,19 @@ const Docs = (props) => {
                 </p>
               </div>
             </div>
-          </div>
         )
       }}
     </Query>
   )
 
   return (
-    typeDivs
+    <div className="pb-3">
+      <PageHeader
+        page={page}
+        description="This page lists the entire schema. Each type displays each of its available fields."
+      ></PageHeader>
+      {typeDivs}
+    </div>
   )
 }
 

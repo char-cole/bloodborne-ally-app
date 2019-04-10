@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename="/build">
         <div>
           <div id="wrapper">
             <nav
@@ -19,7 +19,7 @@ class App extends Component {
               <a href='/rune'>Rune Search</a>
               <a href='/gesture'>Gesture Search</a>
             </nav>
-            <div class="container bg-light pt-3" style={{minHeight: "100vh"}}>
+            <div className="container bg-light pt-3" style={{minHeight: "100vh"}}>
               <Switch>
                 <Route path="/gesture" component={GestureFinderContainer} />
                 <Route path="/rune" component={RuneFinderContainer} />

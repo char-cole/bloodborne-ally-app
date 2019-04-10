@@ -3,6 +3,13 @@ import React from 'react';
 const PageHeader = (props) => {
   return (
     <header className="text-left mb-4">
+      <div className="w-75 p-2 mx-auto rounded border border-warning bg-dark text-white">
+        <h5 className="m-0">
+          Note: The Bloodborne Ally API is not yet in production.
+          Apps will not be able to make queries without the owner of of the API activating it.
+          To use the API in this app or another, contact the author at github.com/char-cole for more info.
+        </h5>
+      </div>
       <h2 className="font-weight-bold">
         {props.page}
       </h2>
