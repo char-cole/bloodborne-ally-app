@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/bloodborne-ally-app/precache-manifest.58c52568490fe57bdab1b69d13cf325b.js"
+  "/bloodborne-ally-app/precache-manifest.db29b16a0796b11c1d1e54fd6249e16b.js"
 );
 
 workbox.clientsClaim();
