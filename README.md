@@ -9,4 +9,4 @@ Currently, Runes and Gestures are available for search.
 
 - More searches
 - Details pages for results of searches
-- Deeper expanation of functions in docs page
+- Deeper expanation of capabilities in docs page
