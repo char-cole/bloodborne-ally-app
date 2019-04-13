@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import GestureFinder from "../components/GestureFinder";
+import GesturesPage from "../components/GesturesPage";
 import { updateSearch, updateResults } from "../actions";
 
 const mapStateToProps = (state) => ({
@@ -16,4 +16,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(GestureFinder);
+export default connect(mapStateToProps,mapDispatchToProps)(GesturesPage);

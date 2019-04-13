@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import DocsContainer from './containers/DocsContainer'
-import RuneFinderContainer from './containers/RuneFinderContainer'
-import GestureFinderContainer from './containers/GestureFinderContainer'
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import RunesPageContainer from './containers/RunesPageContainer'
+import GesturesPageContainer from './containers/GesturesPageContainer';
 
 class App extends Component {
   render() {
     return (
-      <BrowserRouter basename="/build">
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div>
           <div id="wrapper">
             <nav
@@ -15,15 +15,15 @@ class App extends Component {
               role="navigation"
             >
               <h1>Bloodborne Ally</h1>
-              <a href='/'>Home</a>
-              <a href='/rune'>Rune Search</a>
-              <a href='/gesture'>Gesture Search</a>
+              <Link to="/">Home</Link>
+              <Link to="/runes">Rune Search</Link>
+              <Link to="/gestures">Gesture Search</Link>
             </nav>
             <div className="container bg-light pt-3" style={{minHeight: "100vh"}}>
               <Switch>
-                <Route path="/build/gesture" component={GestureFinderContainer} />
-                <Route path="/build/rune" component={RuneFinderContainer} />
-                <Route path="/" component={DocsContainer} />
+                <Route path="/gestures" component={GesturesPageContainer} />
+                <Route path="/runes" component={RunesPageContainer} />
+                <Route exact path="/" component={DocsContainer} />
               </Switch>
             </div>
           </div>

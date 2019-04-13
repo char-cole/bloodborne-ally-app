@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import RuneFinder from "../components/RuneFinder";
+import RunesPage from "../components/RunesPage";
 import { updateSearch, updateResults } from "../actions";
 
 const mapStateToProps = (state) => ({
@@ -16,4 +16,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(RuneFinder);
+export default connect(mapStateToProps,mapDispatchToProps)(RunesPage);

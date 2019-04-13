@@ -2,6 +2,7 @@ import React from 'react';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import PageHeader from "./PageHeader.js"
+import ErrorWarning from "./ErrorWarning.js"
 
 const Docs = (props) => {
   let page = "Docs"
@@ -83,12 +84,7 @@ const Docs = (props) => {
           console.log(error)
           return (
             <div className="row">
-              <div className="col-12 col-md-6">
-                <h5>
-                  There was an error. Most likely, the API is asleep and could not be accessed.
-                  Check the console log for more information.
-                </h5>
-              </div>
+              <ErrorWarning/>
               {instructionalText}
             </div>
           )
@@ -104,7 +100,6 @@ const Docs = (props) => {
               <div id="accordion" className="col-12 col-md-6">
                 {sortedTypes.map((x,i) => {
                   if (props.allTypes.includes(x.name)) {
-                    console.log(x);
                     return (
                       <div key={i} className="card">
                         <div className="card-header text-left" id={"heading-"+i}>
