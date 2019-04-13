@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
-import DocsContainer from './containers/DocsContainer'
-import RunesPageContainer from './containers/RunesPageContainer'
+import DocsContainer from './containers/DocsContainer';
+import RunesPageContainer from './containers/RunesPageContainer';
 import GesturesPageContainer from './containers/GesturesPageContainer';
+import ChalicesPageContainer from './containers/ChalicesPageContainer';
 
 class App extends Component {
   render() {
@@ -18,9 +19,11 @@ class App extends Component {
               <Link to="/">Home</Link>
               <Link to="/runes">Rune Search</Link>
               <Link to="/gestures">Gesture Search</Link>
+              <Link to="/chalices">Chalice Search</Link>
             </nav>
             <div className="container bg-light pt-3" style={{minHeight: "100vh"}}>
               <Switch>
+                <Route path="/chalices" component={ChalicesPageContainer} />
                 <Route path="/gestures" component={GesturesPageContainer} />
                 <Route path="/runes" component={RunesPageContainer} />
                 <Route exact path="/" component={DocsContainer} />

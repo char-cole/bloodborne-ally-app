@@ -9,6 +9,7 @@ const Search = (props) => {
     });
     return searchArray.join(' ')
   }
+
   return (
     <div className="row my-3 mx-0">
       <input type="text"
