@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/bloodborne-ally-app/static/js/runtime~main.a4e08c23.js"
   },
   {
-    "revision": "fa6fe8a88e600cebc95b",
-    "url": "/bloodborne-ally-app/static/js/main.1ec93422.chunk.js"
+    "revision": "6409fc32a21a94f4c78e",
+    "url": "/bloodborne-ally-app/static/js/main.e0b79abf.chunk.js"
   },
   {
     "revision": "6e67350579d33906fa09",
     "url": "/bloodborne-ally-app/static/js/2.835614ba.chunk.js"
   },
   {
-    "revision": "fa6fe8a88e600cebc95b",
+    "revision": "6409fc32a21a94f4c78e",
     "url": "/bloodborne-ally-app/static/css/main.91705644.chunk.css"
   },
   {
-    "revision": "1bd56dc0197bb381a5888e4d040c6638",
+    "revision": "92527eb4077d1a3ed54c813bd816f749",
     "url": "/bloodborne-ally-app/index.html"
   }
 ];
