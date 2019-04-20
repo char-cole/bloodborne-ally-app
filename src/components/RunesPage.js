@@ -23,8 +23,8 @@ class RuneFinder extends Component {
             }
             return (
               <div className="col-6 col-md-4 mb-3" key={i}>
-                <div className="card">
-                  <div className="card-header">
+                <div className="card border-dark">
+                  <div className="card-header bg-dark text-white">
                     <h5>{name}</h5>
                     <p>{lineTwo}</p>
                   </div>

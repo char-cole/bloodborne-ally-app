@@ -19,11 +19,14 @@ const Search = (props) => {
       ></input>
       <ApolloConsumer>
         {client => (
-          <button className="btn btn-secondary border border-white ml-2"
+          <button className="btn btn-light border border-dark ml-2"
             onClick={async () => {
               const { data } = await client.query({
                 query: props.query,
-                variables: {"search": capitalize(props.searchString)}
+                variables: {
+                  "search": capitalize(props.searchString),
+                  "chalice": props.chaliceCheck
+                }
               });
               console.log(data);
               props.updateResults(data[props.queryType].edges);

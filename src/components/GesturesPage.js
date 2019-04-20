@@ -14,8 +14,8 @@ class GestureFinder extends Component {
             console.log(encounter)
             return (
               <div className="col-6 col-md-4" key={i}>
-                <div className="card">
-                  <div className="card-header">
+                <div className="card border-dark">
+                  <div className="card-header bg-dark text-white">
                     <h5>{x.node.name}</h5>
                     <p>Obtained from {encounter.target.name} in {encounter.location.name}</p>
                   </div>

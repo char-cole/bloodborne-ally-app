@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import PageHeader from "./PageHeader.js"
-import SearchChalicesContainer from '../containers/SearchChalicesContainer.js';
+import SearchKeyItemsContainer from '../containers/SearchKeyItemsContainer.js';
 
 class GestureFinder extends Component {
   render() {
     return(
       <div>
         <PageHeader page="Chalice" description="Find Chalices by name"/>
-        <SearchChalicesContainer/>
+        <SearchKeyItemsContainer/>
+        <button onClick={()=> {
+          if(this.props.chaliceCheck) {
+            this.props.toggleChalice(true)
+          } else this.props.toggleChalice(false)
+        }}>Toggle chalices</button>
         <div className="row mt-5">
           {this.props.currentResults.map((x,i) => {
             let source;
@@ -27,8 +32,8 @@ class GestureFinder extends Component {
             }
             return (
               <div className="col-6 col-md-4 mb-3" key={i}>
-                <div className="card">
-                  <div className="card-header">
+                <div className="card border-dark">
+                  <div className="card-header bg-dark text-white">
                     <h5>
                       {x.node.name}
                     </h5>

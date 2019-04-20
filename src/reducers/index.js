@@ -18,8 +18,15 @@ function currentResults(state=[], action) {
   return state;
 }
 
+function chaliceCheck(state=false, action) {
+  if (action.type === "FALSE_TO_TRUE") {
+    return true;
+  }
+  return state;
+}
+
 const rootReducer = combineReducers({
-  allTypes, searchString, currentResults
+  allTypes, searchString, currentResults, chaliceCheck
 });
 
 export default rootReducer;

@@ -2,8 +2,8 @@
 
 This app contains documentation for the Bloodborne Ally GraphQL API.
 
-It also contains a demonstration of the capabilities of the API in the forms of several search pages.
-Currently, Runes and Gestures are available for search.
+It also contains a demonstration of the capabilities of the API in the form of several search pages.
+Currently, Runes, Gestures, and Key Items are available for search.
 
 ## Planned Features
 

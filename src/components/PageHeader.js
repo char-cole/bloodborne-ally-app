@@ -3,7 +3,7 @@ import React from 'react';
 const PageHeader = (props) => {
   return (
     <header className="text-left mb-4">
-      <div className="w-75 p-2 mx-auto rounded shadow bg-dark text-white">
+      <div className="w-75 p-2 mx-auto rounded shadow bg-danger text-white">
         <h5 className="m-0">
           Note: The Bloodborne Ally API is still in development.
           <br/>

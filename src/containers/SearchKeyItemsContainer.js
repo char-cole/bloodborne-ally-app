@@ -4,10 +4,10 @@ import Search from "../components/Search";
 import { updateSearch, updateResults } from "../actions";
 
 let query = gql`
-  query searchChalicesByName($search: String!) {
+  query searchChalicesByName($search: String!, $chalice: Boolean!) {
     Bloodborne_listKeyItem(filter: {
       node: {
-        isChalice: true,
+        isChalice: $chalice,
         name: {
           contains: $search
         }
@@ -42,7 +42,8 @@ const mapStateToProps = (state) => ({
     searchString: state.searchString,
     currentResults: state.currentResults,
     query: query,
-    queryType: "Bloodborne_listKeyItem"
+    queryType: "Bloodborne_listKeyItem",
+    chaliceCheck: state.chaliceCheck
 });
 
 const mapDispatchToProps = (dispatch) => ({

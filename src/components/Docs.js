@@ -101,11 +101,11 @@ const Docs = (props) => {
                 {sortedTypes.map((x,i) => {
                   if (props.allTypes.includes(x.name)) {
                     return (
-                      <div key={i} className="card">
-                        <div className="card-header text-left" id={"heading-"+i}>
+                      <div key={i} className="card border-dark mb-1">
+                        <div className="card-header bg-dark text-left" id={"heading-"+i}>
                           <h5 className="mb-0">
                             <button
-                              className="btn btn-link"
+                              className="btn btn-link text-white"
                               data-toggle="collapse"
                               data-target={"#collapse-"+i}
                               aria-expanded="false"
@@ -132,7 +132,7 @@ const Docs = (props) => {
                                 </p>
                               </li>
                               {x.fields.map((field, index, array) => {
-                                let required = "";
+                                let required;
                                 let typeType = field.type.name;
                                 if (field.type.ofType) {
                                   required = "*";
@@ -143,7 +143,7 @@ const Docs = (props) => {
                                 if (field.name === "id") field.description = "";
                                 return (
                                   <li key={index} className={"row py-2"+border}>
-                                    <div className="col-5">
+                                    <div className="col-5 border-right">
                                       {field.name}<span className="text-danger">{required}</span>
                                     </div>
                                     <span className="col-7">
