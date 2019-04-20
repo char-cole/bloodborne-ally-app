@@ -9,4 +9,4 @@ Currently, Runes, Gestures, and Key Items are available for search.
 
 - More searches
 - Details pages for results of searches
-- Deeper expanation of functions in docs page
+- Deeper expanation of capabilities in docs page
