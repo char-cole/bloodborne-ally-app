@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 import Search from "../components/Search";
-import { updateSearch, updateResults } from "../actions";
+import { updateSearch, updateResults, updateNothing } from "../actions";
 
 let query = gql`
   query searchChalicesByName($search: String!, $chalice: Boolean!) {
@@ -52,6 +52,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   updateResults: (stuff) => {
     dispatch(updateResults(stuff))
+  },
+  updateNothing: (nothing) => {
+    dispatch(updateNothing(nothing))
   }
 })
 

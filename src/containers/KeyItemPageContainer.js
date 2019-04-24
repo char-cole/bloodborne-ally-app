@@ -3,7 +3,9 @@ import KeyItemPage from "../components/KeyItemPage";
 import { toggleChalice } from "../actions";
 
 const mapStateToProps = (state) => ({
-    currentResults: state.currentResults
+  currentResults: state.currentResults,
+  chaliceCheck: state.chaliceCheck,
+  nothing: state.nothing
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -24,5 +24,6 @@ export default {
     ],
     searchString: "",
     currentResults: [],
-    chaliceCheck: false
+    chaliceCheck: false,
+    nothing: "",
 }

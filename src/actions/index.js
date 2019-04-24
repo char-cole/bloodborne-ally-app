@@ -14,11 +14,22 @@ export function updateResults(stuff) {
 
 export function toggleChalice(toggle) {
   if (toggle) {
-      return {
-      type: "TRUE_TO_FALSE"
+    return {
+      type: "TRUE_TO_FALSE",
+      value: toggle
     }
   }
-  else return {
-    type: "FALSE_TO_TRUE"
+  else {
+    return {
+      type: "FALSE_TO_TRUE",
+      value: toggle
+    }
+  }
+}
+
+export function updateNothing(nothing) {
+  return {
+    type: "NOTHING_UPDATED",
+    value: nothing
   }
 }

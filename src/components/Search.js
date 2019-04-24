@@ -28,9 +28,12 @@ const Search = (props) => {
                   "chalice": props.chaliceCheck
                 }
               });
-              console.log(data);
-              props.updateResults(data[props.queryType].edges);
-              console.log(data[props.queryType].edges)
+              if(data[props.queryType].edges[0]) {
+                console.log(data[props.queryType].edges);
+                props.updateNothing("")
+                props.updateResults(data[props.queryType].edges);
+              }
+              else props.updateNothing("No Key Item was found. Were you looking for a Chalice?")
             }}
           >
             Search
