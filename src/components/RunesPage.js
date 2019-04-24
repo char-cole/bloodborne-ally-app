@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PageHeader from "./PageHeader.js"
 import SearchRunesContainer from "../containers/SearchRunesContainer.js"
+import NothingContainer from '../containers/NothingContainer.js';
 
 class RuneFinder extends Component {
   page = "Runes";
@@ -8,12 +9,11 @@ class RuneFinder extends Component {
   render() {
     return(
       <div>
-        <PageHeader page={this.page} description="Find Runes by name"></PageHeader>
+        <PageHeader page={this.page} description={"Find "+this.page+" by name"}></PageHeader>
         <SearchRunesContainer></SearchRunesContainer>
         <div className="row mt-5">
+          <NothingContainer/>
           {this.props.currentResults.map((x,i) => {
-            // let encounter = x.node.droppedByNPC.edges[0].node;
-            // console.log(encounter);
             let lineTwo;
             let name = x.node.name;
             if (x.node.isCovenant) lineTwo = "This is a covenant rune."

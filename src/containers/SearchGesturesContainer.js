@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 import Search from "../components/Search";
-import { updateSearch, updateResults } from "../actions";
+import { updateSearch, updateResults, updateNothing } from "../actions";
 
 let query = gql`
   query searchGesturesByName($search: String!) {
@@ -42,10 +42,11 @@ let query = gql`
 `
 
 const mapStateToProps = (state) => ({
-    searchString: state.searchString,
-    currentResults: state.currentResults,
-    query: query,
-    queryType: "Bloodborne_listGesture"
+  searchString: state.searchString,
+  currentResults: state.currentResults,
+  query: query,
+  queryType: "Bloodborne_listGesture",
+  nothingResults: "No Gestures found. Try again."
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -54,6 +55,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   updateResults: (stuff) => {
     dispatch(updateResults(stuff))
+  },
+  updateNothing: (nothing) => {
+    dispatch(updateNothing(nothing))
   }
 })
 

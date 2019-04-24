@@ -5,13 +5,12 @@ import { toggleChalice } from "../actions";
 const mapStateToProps = (state) => ({
   currentResults: state.currentResults,
   chaliceCheck: state.chaliceCheck,
-  nothing: state.nothing
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    toggleChalice: (toggle) => {
-      dispatch(toggleChalice(toggle))
-    }
+  toggleChalice: (toggle) => {
+    dispatch(toggleChalice(toggle))
+  }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(KeyItemPage);

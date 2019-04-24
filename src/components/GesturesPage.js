@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PageHeader from "./PageHeader.js"
 import SearchGesturesContainer from '../containers/SearchGesturesContainer.js';
+import NothingContainer from '../containers/NothingContainer.js';
 
 class GestureFinder extends Component {
   render() {
@@ -9,6 +10,7 @@ class GestureFinder extends Component {
         <PageHeader page="Gesture" description="Find Gestures by name"/>
         <SearchGesturesContainer/>
         <div className="row mt-5">
+          <NothingContainer/>
           {this.props.currentResults.map((x,i) => {
             let encounter = x.node.rewardFrom.edges[0].node;
             console.log(encounter)

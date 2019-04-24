@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PageHeader from "./PageHeader.js"
 import SearchKeyItemsContainer from '../containers/SearchKeyItemsContainer.js';
+import NothingContainer from '../containers/NothingContainer.js';
 
 class GestureFinder extends Component {
   render() {
@@ -16,9 +17,7 @@ class GestureFinder extends Component {
         }}>
         </input>
         <div className="row mt-5">
-          <h5 className="col-12 m-0 text-center">
-            {this.props.nothing}
-          </h5>
+        <NothingContainer/>
           {
             this.props.currentResults.map((x,i) => {
               let source;

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import DocsContainer from './containers/DocsContainer';
-import RunesPageContainer from './containers/RunesPageContainer';
-import GesturesPageContainer from './containers/GesturesPageContainer';
+import PageRuneSearchContainer from './containers/PageRuneSearchContainer';
+import PageGestureSearchContainer from './containers/PageGestureSearchContainer';
 import KeyItemPageContainer from './containers/KeyItemPageContainer';
 
 let navLinks = [
@@ -28,7 +28,7 @@ class App extends Component {
               <div className="row">
                 {navLinks.map((x,i) => {
                   return (
-                    <Link to={x.url} className="col-2 text-center" key={i}>
+                    <Link to={x.url} className="col-2 text-center" key={i} onClick={() => {this.props.updateResults([])}}>
                       {x.name}
                     </Link>
                   )
@@ -38,8 +38,8 @@ class App extends Component {
             <div className="container bg-light pt-3" style={{minHeight: "100vh"}}>
               <Switch>
                 <Route path="/items" component={KeyItemPageContainer} />
-                <Route path="/gestures" component={GesturesPageContainer} />
-                <Route path="/runes" component={RunesPageContainer} />
+                <Route path="/gestures" component={PageGestureSearchContainer} />
+                <Route path="/runes" component={PageRuneSearchContainer} />
                 <Route exact path="/" component={DocsContainer} />
               </Switch>
             </div>

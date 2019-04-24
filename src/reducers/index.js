@@ -15,7 +15,10 @@ function currentResults(state=[], action) {
   if (action.type === "RESULTS_UPDATED") {
     return action.value;
   }
-  return [];
+  else if (action.type === "NO_RESULTS") {
+    return [];
+  }
+  return state;
 }
 
 function chaliceCheck(state=false, action) {
