@@ -28,7 +28,7 @@ class App extends Component {
               <div className="row">
                 {navLinks.map((x,i) => {
                   return (
-                    <Link to={x.url} className="col-2 text-center" key={i}>
+                    <Link to={x.url} className="col-2 text-center" key={i} onClick={() => this.props.updateResults([])}>
                       {x.name}
                     </Link>
                   )
