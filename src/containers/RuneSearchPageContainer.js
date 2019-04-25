@@ -2,6 +2,13 @@ import React from 'react'
 import { connect } from "react-redux";
 import SearchPage from "../components/SearchPage";
 import SearchRunesContainer from "../containers/SearchRunesContainer.js"
+import {  updateResults } from "../actions";
+
+const mapDispatchToProps = (dispatch) => ({
+  updateResults: (stuff) => {
+    dispatch(updateResults(stuff))
+  }
+})
 
 const mapStateToProps = (state) => ({
   searchFor: <SearchRunesContainer></SearchRunesContainer>,
@@ -30,4 +37,4 @@ const mapStateToProps = (state) => ({
   })
 });
 
-export default connect(mapStateToProps)(SearchPage);
+export default connect(mapStateToProps,mapDispatchToProps)(SearchPage);

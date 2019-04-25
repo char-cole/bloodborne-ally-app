@@ -36,8 +36,9 @@ const Search = (props) => {
           >
             Search
           </button>
-        )}
+      )}
       </ApolloConsumer>
+      {props.searchOptions}
     </div>
   )
 }

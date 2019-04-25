@@ -2,13 +2,22 @@ import React from 'react'
 import { connect } from "react-redux";
 import SearchPage from "../components/SearchPage";
 import SearchGesturesContainer from './SearchGesturesContainer';
+import {  updateResults } from "../actions";
+
+updateResults([]);
+
+const mapDispatchToProps = (dispatch) => ({
+  updateResults: (stuff) => {
+    dispatch(updateResults(stuff))
+  }
+})
 
 const mapStateToProps = (state) => ({
   searchFor: <SearchGesturesContainer></SearchGesturesContainer>,
   page: "Gestures",
 	results: state.currentResults.map((x,i) => {
+    console.log(x)
     let encounter = x.node.rewardFrom.edges[0].node;
-    console.log(encounter)
     return (
       <div className="col-6 col-md-4" key={i}>
         <div className="card border-dark">
@@ -27,4 +36,4 @@ const mapStateToProps = (state) => ({
   })
 });
 
-export default connect(mapStateToProps)(SearchPage);
+export default connect(mapStateToProps,mapDispatchToProps)(SearchPage);

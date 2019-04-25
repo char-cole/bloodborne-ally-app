@@ -1,7 +1,9 @@
+import React from 'react';
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 import Search from "../components/Search";
 import { updateSearch, updateResults, updateNothing } from "../actions";
+import KeyItemSearchOptionsContainer from "../containers/KeyItemSearchOptionsContainer";
 
 let query = gql`
   query searchChalicesByName($search: String!, $chalice: Boolean!) {
@@ -44,7 +46,8 @@ const mapStateToProps = (state) => ({
   query: query,
   queryType: "Bloodborne_listKeyItem",
   chaliceCheck: state.chaliceCheck,
-  nothingResults: "No Key Items found. Make sure Chalices are toggled on if searching for a Chalice."
+  nothingResults: "No Key Items found. Make sure Chalices are toggled on if searching for a Chalice.",
+  searchOptions: <KeyItemSearchOptionsContainer></KeyItemSearchOptionsContainer>
 });
 
 const mapDispatchToProps = (dispatch) => ({

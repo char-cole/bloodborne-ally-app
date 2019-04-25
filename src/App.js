@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import DocsContainer from './containers/DocsContainer';
-import PageRuneSearchContainer from './containers/PageRuneSearchContainer';
-import PageGestureSearchContainer from './containers/PageGestureSearchContainer';
-import KeyItemPageContainer from './containers/KeyItemPageContainer';
+import RuneSearchPageContainer from './containers/RuneSearchPageContainer';
+import GestureSearchPageContainer from './containers/GestureSearchPageContainer';
+import KeyItemSearchPageContainer from './containers/KeyItemSearchPageContainer';
 
 let navLinks = [
   {url: "/", name: "Home"},
@@ -28,7 +28,7 @@ class App extends Component {
               <div className="row">
                 {navLinks.map((x,i) => {
                   return (
-                    <Link to={x.url} className="col-2 text-center" key={i} onClick={() => {this.props.updateResults([])}}>
+                    <Link to={x.url} className="col-2 text-center" key={i}>
                       {x.name}
                     </Link>
                   )
@@ -37,9 +37,9 @@ class App extends Component {
             </nav>
             <div className="container bg-light pt-3" style={{minHeight: "100vh"}}>
               <Switch>
-                <Route path="/items" component={KeyItemPageContainer} />
-                <Route path="/gestures" component={PageGestureSearchContainer} />
-                <Route path="/runes" component={PageRuneSearchContainer} />
+                <Route path="/items" component={KeyItemSearchPageContainer} />
+                <Route path="/gestures" component={GestureSearchPageContainer} />
+                <Route path="/runes" component={RuneSearchPageContainer} />
                 <Route exact path="/" component={DocsContainer} />
               </Switch>
             </div>

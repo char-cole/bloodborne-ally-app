@@ -3,6 +3,12 @@ import PageHeader from "./PageHeader.js"
 import NothingContainer from '../containers/NothingContainer.js';
 
 class SearchPage extends Component {
+
+  componentWillUnmount() {
+    console.log("results cleared");
+    this.props.updateResults([])
+  }
+
   render() {
     return(
       <div>
