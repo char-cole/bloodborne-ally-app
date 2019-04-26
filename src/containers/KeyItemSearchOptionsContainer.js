@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
-import SearchOptions from "../components/SearchOptions";
+import KeyItemSearchOptions from "../components/KeyItemSearchOptions";
 import { toggleChalice } from "../actions";
 
 const mapStateToProps = (state) => ({
-  chaliceCheck: state.chaliceCheck,
+  toggleChalice: state.toggleChalice
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -12,4 +12,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchOptions);
+export default connect(mapStateToProps, mapDispatchToProps)(KeyItemSearchOptions);
