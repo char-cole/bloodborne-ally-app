@@ -17,7 +17,7 @@ const PageHeader = (props) => {
         {props.page}
       </h2>
       <h5 className="pr-5">
-        {"Find "+props.page+" by name"}
+        { props.description || "Find "+props.page+" by name"}
       </h5>
     </header>
   )
