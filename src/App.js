@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import LinksContainer from './containers/LinksContainer';
 import DocsContainer from './containers/DocsContainer';
 import RuneSearchPageContainer from './containers/RuneSearchPageContainer';
 import GestureSearchPageContainer from './containers/GestureSearchPageContainer';
 import KeyItemSearchPageContainer from './containers/KeyItemSearchPageContainer';
-
-let navLinks = [
-  {url: "/", name: "Home"},
-  {url: "/runes", name: "Rune Search"},
-  {url: "/gestures", name: "Gesture Search"},
-  {url: "/items", name: "Key Item Search"},
-]
 
 class App extends Component {
   render() {
@@ -26,13 +20,7 @@ class App extends Component {
                 Bloodborne Ally
               </h1>
               <div className="row">
-                {navLinks.map((x,i) => {
-                  return (
-                    <Link to={x.url} className="col-2 text-center" key={i} onClick={() => this.props.updateResults([])}>
-                      {x.name}
-                    </Link>
-                  )
-                })}
+                <LinksContainer/>
               </div>
             </nav>
             <div className="container bg-light pt-3" style={{minHeight: "100vh"}}>

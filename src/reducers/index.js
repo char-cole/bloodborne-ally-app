@@ -36,8 +36,12 @@ function nothing(state="", action) {
   return state
 }
 
+function navLinks(state=[], action) {
+  return state;
+}
+
 const rootReducer = combineReducers({
-  allTypes, searchString, currentResults, chaliceCheck, nothing
+  allTypes, searchString, currentResults, chaliceCheck, nothing, navLinks
 });
 
 export default rootReducer;
