@@ -3,7 +3,8 @@ import KeyItemSearchOptions from "../components/KeyItemSearchOptions";
 import { toggleChalice } from "../actions";
 
 const mapStateToProps = (state) => ({
-  toggleChalice: state.toggleChalice
+  toggleChalice: state.toggleChalice,
+  chaliceCheck: state.chaliceCheck
 });
 
 const mapDispatchToProps = (dispatch) => ({

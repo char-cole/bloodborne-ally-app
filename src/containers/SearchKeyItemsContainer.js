@@ -43,7 +43,7 @@ let query = gql`
 const mapStateToProps = (state) => ({
   searchString: state.searchString,
   currentResults: state.currentResults,
-  query: query,
+  query,
   queryType: "Bloodborne_listKeyItem",
   chaliceCheck: state.chaliceCheck,
   nothingResults: "No Key Items found. Make sure Chalices are toggled on if searching for a Chalice.",

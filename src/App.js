@@ -5,6 +5,8 @@ import DocsContainer from './containers/DocsContainer';
 import RuneSearchPageContainer from './containers/RuneSearchPageContainer';
 import GestureSearchPageContainer from './containers/GestureSearchPageContainer';
 import KeyItemSearchPageContainer from './containers/KeyItemSearchPageContainer';
+import ListChalicesPageContainer from './containers/ListChalicesPageContainer';
+import ListGesturesPageContainer from './containers/ListGesturesPageContainer';
 
 class App extends Component {
   render() {
@@ -25,9 +27,11 @@ class App extends Component {
             </nav>
             <div className="container bg-light pt-3" style={{minHeight: "100vh"}}>
               <Switch>
-                <Route path="/items" component={KeyItemSearchPageContainer} />
-                <Route path="/gestures" component={GestureSearchPageContainer} />
-                <Route path="/runes" component={RuneSearchPageContainer} />
+                <Route path="/item-search" component={KeyItemSearchPageContainer} />
+                <Route path="/gesture-search" component={GestureSearchPageContainer} />
+                <Route path="/rune-search" component={RuneSearchPageContainer} />
+                <Route path="/chalices" component={ListChalicesPageContainer} />
+                <Route path="/gestures" component={ListGesturesPageContainer} />
                 <Route exact path="/" component={DocsContainer} />
               </Switch>
             </div>

@@ -51,7 +51,7 @@ query getTheseRunes($search: String!) {
 const mapStateToProps = (state) => ({
   searchString: state.searchString,
   currentResults: state.currentResults,
-  query: query,
+  query,
   queryType: "Bloodborne_listRune",
   nothingResults: "No Runes found. Try Again."
 });

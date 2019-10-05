@@ -6,6 +6,8 @@ export function updateSearch(search) {
 }
 
 export function updateResults(stuff) {
+  console.log('get this stuff')
+  console.log(stuff)
   return {
     type: "RESULTS_UPDATED",
     value: stuff
@@ -13,6 +15,7 @@ export function updateResults(stuff) {
 }
 
 export function toggleChalice(toggle) {
+  console.log(toggle)
   if (toggle) {
     return {
       type: "TRUE_TO_FALSE",

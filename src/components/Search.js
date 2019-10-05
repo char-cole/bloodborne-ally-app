@@ -21,7 +21,7 @@ const Search = (props) => {
               "search": capitalize(props.searchString),
               "chalice": props.chaliceCheck
             }
-          });
+          })
           props.updateResults(data[props.queryType].edges);
           console.log(data[props.queryType].edges);
           if(data[props.queryType].edges[0]) props.updateNothing("")

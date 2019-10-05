@@ -44,7 +44,7 @@ let query = gql`
 const mapStateToProps = (state) => ({
   searchString: state.searchString,
   currentResults: state.currentResults,
-  query: query,
+  query,
   queryType: "Bloodborne_listGesture",
   nothingResults: "No Gestures found. Try again."
 });
